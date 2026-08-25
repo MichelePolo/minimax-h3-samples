@@ -31,3 +31,6 @@ Generati in un unico run con `batch_gen.py` (carica il modello **una volta**, po
 - `maestro-taichi.mp4` — maestro di Tai Chi ("Wave Hands Like Clouds") in palestra con parquet, musica ambient orientale (**14,4 s**, durata massima di H3)
 
 Nota tempi (8 step): 512×288 ≈ 141 s/clip da 5 s; 960×544 ≈ 1181 s (l'attenzione cresce col quadrato dei token → 512×288 è il punto dolce per il batch).
+
+### `batch/maestro-taichi-960x544.mp4` (hero, alta risoluzione)
+Il maestro di Tai Chi a **960×544** (5,2 s, ~19 min di generazione, audio stereo). A questa risoluzione la durata piena 14,4 s va in **OOM** sui 96 GB (pesi ~70 GB + attivazioni di 345 frame sforano); 5 s è il massimo sicuro senza offload del conditioner.
