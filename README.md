@@ -22,3 +22,12 @@ Stessa scena, versione **ottimizzata**: **512×288**, **8 inference steps**, 5,1
 - **Generazione: ~141 s** (contro ~2h 11m del primo sample), dopo un caricamento una-tantum di ~1m40s.
 - Qualità coerente (il modello è guidance-distilled). Adatto a **generazione batch offline**.
 - Sblocco chiave: loader a shard (`init_empty_weights` + `load_checkpoint_and_dispatch`) che carica il conditioner da 63 GB diretto in VRAM, evitando lo swap dei 30 GB di RAM di sistema.
+
+## Batch samples (`batch/`)
+Generati in un unico run con `batch_gen.py` (carica il modello **una volta**, poi cicla sui prompt). Tutti **512×288, 8 step**, audio stereo nativo.
+- `volpe-neve.mp4` — volpe rossa nella foresta innevata all'alba (5,2 s)
+- `onde-tramonto.mp4` — onde dell'oceano al tramonto, ora dorata (5,2 s)
+- `citta-pioggia.mp4` — strada cittadina al neon sotto la pioggia, di notte (5,2 s)
+- `maestro-taichi.mp4` — maestro di Tai Chi ("Wave Hands Like Clouds") in palestra con parquet, musica ambient orientale (**14,4 s**, durata massima di H3)
+
+Nota tempi (8 step): 512×288 ≈ 141 s/clip da 5 s; 960×544 ≈ 1181 s (l'attenzione cresce col quadrato dei token → 512×288 è il punto dolce per il batch).
