@@ -34,3 +34,6 @@ Nota tempi (8 step): 512×288 ≈ 141 s/clip da 5 s; 960×544 ≈ 1181 s (l'atte
 
 ### `batch/maestro-taichi-960x544.mp4` (hero, alta risoluzione)
 Il maestro di Tai Chi a **960×544** (5,2 s, ~19 min di generazione, audio stereo). A questa risoluzione la durata piena 14,4 s va in **OOM** sui 96 GB (pesi ~70 GB + attivazioni di 345 frame sforano); 5 s è il massimo sicuro senza offload del conditioner.
+
+## 📖 Manuale d'uso completo
+Vedi **[MANUALE.md](MANUALE.md)** — tutti i casi d'uso di MiniMax-H3: i 3 workflow (`t2va`/`fl2va`/`ref2va`), immagini come keyframe, video/audio come riferimenti, **coerenza dei personaggi** per storie multi-shot, vincoli, e le ricette pratiche su Sullivan (loader a shard, offload del conditioner, tempi).
