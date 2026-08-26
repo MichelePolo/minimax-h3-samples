@@ -50,3 +50,6 @@ Coprono tutte le modalità del [MANUALE.md](MANUALE.md):
 - `ref2va_gen.py` — **riferimenti** (immagini/video/audio) → video, per la **coerenza dei personaggi** (richiede `transformer_ref/`)
 
 Provenienza di ogni sample (script + parametri + **prompt completo**): vedi **[GENERATION.md](GENERATION.md)**.
+
+### Cache del condizionamento
+Per snellire batch grandi o rigenerare lo stesso prompt a più risoluzioni: `scripts/encode_prompt.py` salva gli stati di Qwen-VL (una volta sola), `scripts/denoise_cached.py` genera i video **senza ricaricare** il conditioner da 63 GB. Dettagli in [MANUALE.md](MANUALE.md) §8.

@@ -198,6 +198,22 @@ abito, colori) aiuta la coerenza anche in `t2va`, entro i limiti.
   env -u HSA_OVERRIDE_GFX_VERSION ./.venv/bin/python batch_gen.py prompts.json batch_out
   ```
 - **`t2va_offload.py`** — variante con offload del conditioner per durate lunghe ad alta risoluzione.
+- **`fl2va_gen.py`** — immagine keyframe → video. **`ref2va_gen.py`** — riferimenti → video (coerenza personaggi; richiede `transformer_ref/`).
+- **`encode_prompt.py`** + **`denoise_cached.py`** — cache del condizionamento (vedi sotto).
+
+### Cache del condizionamento (opzionale — "togliere Qwen-VL dal runtime")
+L'output di Qwen-VL per un prompt è **deterministico** e minuscolo (~0,1–1,3 MB) e **non dipende dalla
+risoluzione**. Si possono quindi separare le due fasi:
+1. **`encode_prompt.py <prompts.json> <cache_dir>`** — carica Qwen-VL **una volta**, salva uno stato
+   `.pt` per prompt, poi lo spegne.
+2. **`denoise_cached.py <cache_dir> <out_dir> [WxH] [num_frames] [steps]`** — carica **solo il denoiser**
+   (VRAM ~45 GB, **niente Qwen-VL**) e genera i video dagli stati salvati; lo stesso `.pt` si rende a
+   qualsiasi risoluzione/durata.
+
+Vantaggi: il conditioner da 63 GB **non entra mai** nel processo di generazione (avvio più rapido, meno
+memoria), ideale per batch grandi o per rigenerare lo stesso prompt a più risoluzioni/seed. Puoi anche
+codificare i prompt su un'altra macchina. Gli `.pt` si caricano con `weights_only=True` (nessun rischio
+di code-execution). Verificato: video da cache **identico** a quello generato in un colpo solo.
 
 ### Uso consigliato per la tua app
 Genera **in batch offline** (512×288 per il volume, 960×544 per i clip "hero" brevi), l'app fa solo
