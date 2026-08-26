@@ -37,3 +37,6 @@ Il maestro di Tai Chi a **960×544** (5,2 s, ~19 min di generazione, audio stere
 
 ## 📖 Manuale d'uso completo
 Vedi **[MANUALE.md](MANUALE.md)** — tutti i casi d'uso di MiniMax-H3: i 3 workflow (`t2va`/`fl2va`/`ref2va`), immagini come keyframe, video/audio come riferimenti, **coerenza dei personaggi** per storie multi-shot, vincoli, e le ricette pratiche su Sullivan (loader a shard, offload del conditioner, tempi).
+
+### `batch/maestro-taichi-960x544-14s.mp4` (durata piena, via offload)
+Il maestro a **960×544 per 14,4 s** (durata massima di H3), reso possibile dall'**offload del conditioner** (`t2va_offload.py`): libera ~35 GB del Qwen3-VL dopo la codifica del prompt → i 345 frame entrano in VRAM (prima andavano OOM). Costo: **~3h15m** di generazione (960×544 a piena durata è molto pesante). Audio stereo.
