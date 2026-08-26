@@ -40,3 +40,13 @@ Vedi **[MANUALE.md](MANUALE.md)** — tutti i casi d'uso di MiniMax-H3: i 3 work
 
 ### `batch/maestro-taichi-960x544-14s.mp4` (durata piena, via offload)
 Il maestro a **960×544 per 14,4 s** (durata massima di H3), reso possibile dall'**offload del conditioner** (`t2va_offload.py`): libera ~35 GB del Qwen3-VL dopo la codifica del prompt → i 345 frame entrano in VRAM (prima andavano OOM). Costo: **~3h15m** di generazione (960×544 a piena durata è molto pesante). Audio stereo.
+
+## 🛠️ Script di generazione (`scripts/`)
+Coprono tutte le modalità del [MANUALE.md](MANUALE.md):
+- `t2va_test.py` — testo → video (singola clip)
+- `batch_gen.py` + `prompts.json` — batch (carica una volta, cicla sui prompt)
+- `t2va_offload.py` — durata piena ad alta risoluzione (offload del conditioner)
+- `fl2va_gen.py` — **immagine keyframe** (primo/ultimo frame) → video
+- `ref2va_gen.py` — **riferimenti** (immagini/video/audio) → video, per la **coerenza dei personaggi** (richiede `transformer_ref/`)
+
+Provenienza di ogni sample (script + parametri + **prompt completo**): vedi **[GENERATION.md](GENERATION.md)**.

@@ -1,0 +1,19 @@
+[
+  {
+    "name": "volpe-neve",
+    "prompt": "integrated_multimodal_description: [Shot 1] Cinematic medium shot, slow push-in. A red fox trots through a snowy pine forest at dawn, soft golden light filtering through the trees, snow crunching under its paws, breath visible in the cold air.\noverall_soundscape: quiet forest ambience, gentle wind, the soft crunch of snow underfoot, a distant bird call.\nnon_diegetic_music: a light, warm acoustic guitar melody, calm and unhurried."
+  },
+  {
+    "name": "onde-tramonto",
+    "prompt": "integrated_multimodal_description: [Shot 1] Wide static shot at golden hour. Ocean waves roll gently onto an empty sandy beach, warm sunset light shimmering on the wet sand, seafoam sliding back into the water.\noverall_soundscape: rhythmic ocean waves, distant seagulls, a soft breeze.\nnon_diegetic_music: mellow ambient synth pads, peaceful and slow."
+  },
+  {
+    "name": "citta-pioggia",
+    "prompt": "integrated_multimodal_description: [Shot 1] Cinematic shot, shallow depth of field. A neon-lit city street at night in the rain, colorful reflections on the wet asphalt, blurred headlights passing by.\noverall_soundscape: steady rain, distant traffic, tires hissing on wet road.\nnon_diegetic_music: moody lo-fi beat, mellow and atmospheric."
+  },
+  {
+    "name": "maestro-taichi",
+    "num_frames": 345,
+    "prompt": "integrated_multimodal_description: [Shot 1] Cinematic wide shot, static camera, soft natural light from tall windows. In a spacious martial arts studio with a warm honey-toned parquet wood floor, an elderly Tai Chi master in a flowing white silk uniform stands centered, demonstrating the \"Wave Hands Like Clouds\" movement. He shifts his weight slowly from one leg to the other, arms circling smoothly and continuously in front of his torso, hands rotating with deliberate control, his movements fluid and unhurried. Calm focused expression, relaxed posture, precise.\noverall_soundscape: quiet studio ambience, the soft creak of the wooden floor, faint sound of bare feet pivoting on parquet, slow deep breathing, gentle rustle of the silk uniform.\nnon_diegetic_music: soft ambient oriental music, a slow guzheng melody over a bamboo flute and warm sustained pads, meditative and serene."
+  }
+]
