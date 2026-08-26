@@ -123,6 +123,12 @@ Regole d'oro dei riferimenti:
   audio per condizionare **solo sul movimento**.
 - `num_frames` è **obbligatorio** in `ref2va`. Per una durata pari a una traccia audio:
   `round(samples / sample_rate * 24)` (poi arrotondato al `17·n+5` più vicino, entro 5–15 s).
+- ⚠️ **Passa sempre `width`/`height`** in `ref2va`: i riferimenti non vincolano la geometria e il canvas
+  default è ~768 (16:9) → su Sullivan (96 GB) va **OOM**. Forza es. `512×288`.
+- ⚠️ **Memoria/tempo**: `ref2va` tiene residenti **sia Qwen-VL sia `transformer_ref`** (~79 GB) → a 512×288
+  entra ma è **più lento** (~23 min/clip da 5 s, testato). Un riferimento **immagine** è molto più leggero
+  di un riferimento **video** (che aggiunge la VAE-encode su tutti i frame → rischio OOM). Verificato
+  2026-08-27: coerenza del soggetto mantenuta con un `<Picture 1>`.
 
 ---
 

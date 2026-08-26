@@ -21,6 +21,7 @@ Modello: `MiniMaxAI/MiniMax-H3` (layout diffusers). Default: 24 fps, seed 42, 8 
 | `batch/maestro-taichi-960x544.mp4` | `batch_gen.py` (`prompts_taichi960.json`, 124f) | *taichi* | 960×544 | 124 (5,2 s) | 8 | 1159 s |
 | `batch/maestro-taichi-960x544-14s.mp4` | `t2va_offload.py` (`prompts_taichi960.json`, 345f) | *taichi* | 960×544 | 345 (14,4 s) | 8 | ~3h15m |
 | `batch/gattini.mp4` | `batch_gen.py` (`prompts_kittens.json`) | *gattini* | 512×288 | 124 (5,2 s) | 8 | 137 s |
+| `batch/gattini-prato-ref2va.mp4` | `ref2va_gen.py` (riferimento immagine `<Picture 1>` = frame di gattini.mp4) | *gattini-prato* | 512×288 | 124 (5,2 s) | 8 | ~23 min |
 
 Esempi di comando:
 ```
@@ -69,4 +70,12 @@ non_diegetic_music: soft ambient oriental music, a slow guzheng melody over a ba
 integrated_multimodal_description: [Shot 1] Cinematic close-up, soft shallow depth of field, warm natural window light. Three fluffy kittens play together on a cozy cream-colored blanket, tumbling and gently pawing at a ball of red yarn, big round curious eyes, tiny soft paws, whiskers catching the light, playful and adorable.
 overall_soundscape: soft playful kitten mews and tiny meows, the gentle rustle of the blanket, a faint contented purring.
 non_diegetic_music: a light cheerful ukulele and glockenspiel melody, warm, bouncy and playful.
+```
+
+### gattini-prato (ref2va, riferimento immagine)
+Riferimento: un fotogramma di `gattini.mp4` usato come `<Picture 1>` (coerenza del soggetto).
+```
+integrated_multimodal_description: [Shot 1] Cinematic shot, soft natural daylight, shallow depth of field. <Picture 1> The same two fluffy ginger kittens now run and play together across a sunny green grass lawn, bounding through the blades, chasing each other, ears perked and tails up, tiny paws kicking up bits of grass, playful and full of energy.
+overall_soundscape: soft playful kitten meows, rustling grass, a gentle outdoor breeze, distant birdsong.
+non_diegetic_music: a light cheerful ukulele and glockenspiel melody, bouncy and playful.
 ```

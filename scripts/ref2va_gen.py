@@ -23,6 +23,7 @@ from accelerate import init_empty_weights, load_checkpoint_and_dispatch
 
 MODEL = "/home/michele/Scaricati/MiniMax-H3"
 NUM_FRAMES, STEPS, SEED = 124, 8, 42
+W, H = 512, 288   # forza canvas piccola: senza, ref2va usa il default ~768 (16:9) -> OOM sui 96GB
 def log(m): print(f"[{time.strftime('%H:%M:%S')}] {m}", flush=True)
 
 if not os.path.isdir(os.path.join(MODEL, "transformer_ref")):
@@ -65,7 +66,7 @@ pipe.text_encoder.requires_grad_(False)
 pipe.vae.to("cuda"); pipe.audio_vae.to("cuda")
 
 log(f"Genero con {len(refs)} riferimenti ...")
-r = pipe(prompt=prompt, references=refs, num_frames=NUM_FRAMES, num_inference_steps=STEPS,
+r = pipe(prompt=prompt, references=refs, width=W, height=H, num_frames=NUM_FRAMES, num_inference_steps=STEPS,
          generator=torch.Generator().manual_seed(SEED), output=["videos", "audio", "sampling_rate"])
 encode_video(r["videos"][0], fps=24, output_path="ref2va_out.mp4",
              audio=r["audio"][0], audio_sample_rate=r["sampling_rate"])
