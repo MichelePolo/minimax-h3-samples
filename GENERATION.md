@@ -20,6 +20,7 @@ Modello: `MiniMaxAI/MiniMax-H3` (layout diffusers). Default: 24 fps, seed 42, 8 
 | `batch/maestro-taichi.mp4` | `batch_gen.py` (`prompts.json`) | *taichi* | 512×288 | 345 (14,4 s) | 8 | ~15 min |
 | `batch/maestro-taichi-960x544.mp4` | `batch_gen.py` (`prompts_taichi960.json`, 124f) | *taichi* | 960×544 | 124 (5,2 s) | 8 | 1159 s |
 | `batch/maestro-taichi-960x544-14s.mp4` | `t2va_offload.py` (`prompts_taichi960.json`, 345f) | *taichi* | 960×544 | 345 (14,4 s) | 8 | ~3h15m |
+| `batch/gattini.mp4` | `batch_gen.py` (`prompts_kittens.json`) | *gattini* | 512×288 | 124 (5,2 s) | 8 | 137 s |
 
 Esempi di comando:
 ```
@@ -61,4 +62,11 @@ non_diegetic_music: moody lo-fi beat, mellow and atmospheric.
 integrated_multimodal_description: [Shot 1] Cinematic wide shot, static camera, soft natural light from tall windows. In a spacious martial arts studio with a warm honey-toned parquet wood floor, an elderly Tai Chi master in a flowing white silk uniform stands centered, demonstrating the "Wave Hands Like Clouds" movement. He shifts his weight slowly from one leg to the other, arms circling smoothly and continuously in front of his torso, hands rotating with deliberate control, his movements fluid and unhurried. Calm focused expression, relaxed posture, precise.
 overall_soundscape: quiet studio ambience, the soft creak of the wooden floor, faint sound of bare feet pivoting on parquet, slow deep breathing, gentle rustle of the silk uniform.
 non_diegetic_music: soft ambient oriental music, a slow guzheng melody over a bamboo flute and warm sustained pads, meditative and serene.
+```
+
+### gattini
+```
+integrated_multimodal_description: [Shot 1] Cinematic close-up, soft shallow depth of field, warm natural window light. Three fluffy kittens play together on a cozy cream-colored blanket, tumbling and gently pawing at a ball of red yarn, big round curious eyes, tiny soft paws, whiskers catching the light, playful and adorable.
+overall_soundscape: soft playful kitten mews and tiny meows, the gentle rustle of the blanket, a faint contented purring.
+non_diegetic_music: a light cheerful ukulele and glockenspiel melody, warm, bouncy and playful.
 ```
